@@ -1,10 +1,8 @@
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-
+import { Map } from "../Map";
 export function Main() {
   return (
-    <Link to="/signin">
-      <Button variant="contained">Test</Button>
-    </Link>
+    <Map/>
   );
 }
