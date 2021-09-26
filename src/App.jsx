@@ -25,7 +25,7 @@ export default function App() {
           <Route from="/signup" exact>
             <SignUp />
           </Route>
-          <Route from="/" exact>
+          <Route from={["/table", "/"]} exact>
             <Main />
           </Route>
         </Switch>
