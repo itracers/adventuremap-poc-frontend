@@ -47,25 +47,26 @@ export const Main = React.memo(() => {
           id="country-select"
           sx={{ my: 1, width: 300 }}
           options={[
-            "Средняя стоимость недельного отдыха",
-            "Плотность населения",
-            "Экологическая обстановка",
-            "Туристская привлекательность",
-            "Средняя ЗП",
-            "Прожиточный минимум",
-            "Средняя стоимость отелей",
-            "Средний чек ресторанов",
-            "Органичения для въезда",
-            "Визовый режим",
-            "Ограничения по сроку прибывания",
-            "Политическая обстановка",
-            "Военная обстановка",
+            "Average one week rest price",
+            "Population density",
+            "Ecology situation",
+            "Tourist attraction",
+            "Middle wage",
+            "Living wage",
+            "Average hotel price",
+            "Average bill of restoraints",
+            "Entry restrictions",
+            "Visa regime/Visa situation",
+            "Restriction on length of stay",
+            "Political situation",
+            "Military situation",
           ]}
           autoHighlight
           getOptionLabel={(option) => option}
           renderOption={(props, option) => (
             <Box
               component="li"
+            
               sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
               {...props}
             >
