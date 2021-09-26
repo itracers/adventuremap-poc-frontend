@@ -1,9 +1,10 @@
+import React from "react";
 import { useState } from "react";
 import { Map } from "../Map";
 import { Header } from "../Header";
 import { Sidebar } from "../Sidebar";
-import { Container } from "./styled";
-export function Main() {
+
+export const Main =  React.memo(()=>{
   const [menuData, setMenuData] = useState({ isOpen: false, data: null });
   return (
     <>
@@ -12,10 +13,8 @@ export function Main() {
           setMenuData({ isOpen: !menuData.isOpen, data: menuData.data })
         }
       />
-      <Container isOpen = {!menuData.isOpen}>
         <Sidebar menuData={menuData} />
         <Map menuData={menuData} setMenuData={setMenuData} />
-      </Container>
     </>
   );
-}
+});
