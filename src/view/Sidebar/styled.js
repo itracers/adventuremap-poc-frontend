@@ -9,6 +9,7 @@ export const Container = styled.div`
     height: calc(100vh - 56px);
     z-index: 1;
     right: ${props=> (props.isOpen ? "0px" : "408px")};
+    display: inline-block;
     transition: 0.2s;
     @media (min-width: 600px){
         padding-left: 24px;

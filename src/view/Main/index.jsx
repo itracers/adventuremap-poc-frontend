@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Map } from "../Map";
 import { Header } from "../Header";
 import { Sidebar } from "../Sidebar";
-
+import { Container } from "./styled";
 export function Main() {
   const [menuData, setMenuData] = useState({ isOpen: false, data: null });
   return (
@@ -12,8 +12,10 @@ export function Main() {
           setMenuData({ isOpen: !menuData.isOpen, data: menuData.data })
         }
       />
-      <Sidebar menuData={menuData} />
-      <Map menuData={menuData} setMenuData={setMenuData} />
+      <Container>
+        <Sidebar menuData={menuData} />
+        <Map menuData={menuData} setMenuData={setMenuData} />
+      </Container>
     </>
   );
 }
