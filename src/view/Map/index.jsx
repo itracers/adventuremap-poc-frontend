@@ -9,13 +9,16 @@ import { fromLonLat } from "ol/proj";
 import GeoJSON from "ol/format/GeoJSON";
 import countries from "../../data/countriesHD.json";
 
-function ValueToRgb(value) {
+function valueToRgba(value, a) {
+  let r = 255, g = 255, b = 0;
   if (value <= 50) {
-    return `rgb(${255}, ${(value / 50) * 255}, ${0})`;
+    g = Math.floor((value / 50) * 255)
   } else if (value > 50) {
-    return `rgb(${255 - ((value - 50) / 50) * 255}, ${255}, ${0})`;
+    r = Math.floor(255 - ((value - 50) / 50) * 255);
   }
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
+
 
 const styles = {
   MultiPolygon: new Style({
@@ -57,13 +60,14 @@ const styleFunction = function (feature) {
     style.fill_.color_ = "rgba(255,0,0,0.2)";
     style.stroke_.color_ = "rgba(255,0,0,0.2)";
   } else {
-    style.fill_.color_ = "rgba(0,255,0,0.2)";
-    style.stroke_.color_ = "rgba(0,255,0,0.2)";
+    style.fill_.color_ = valueToRgba(feature?.values_?.randomNumber, 0.2);
+    style.stroke_.color_ = valueToRgba(feature?.values_?.randomNumber, 1);
   }
   return style;
 };
 
 countries.features = countries.features.map((country) => {
+  country.properties.randomNumber = Math.round(Math.random()*100);
   if (country.geometry.type === "Polygon") {
     country.geometry.coordinates = country.geometry.coordinates.map((arr) => {
       return arr.map((arr2) => {
