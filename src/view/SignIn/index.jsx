@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import LockIcon from "@mui/icons-material/Lock";
 import { Container } from "./styled.js";
+import { Link } from "react-router-dom";
 
 export function SignIn() {
   return (
@@ -36,7 +37,7 @@ export function SignIn() {
             <TextField
               fullWidth
               id="input-with-sx"
-              label="Login"
+              label="Email"
               variant="standard"
             />
           </Box>
@@ -64,9 +65,13 @@ export function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              Sign Up
+              <Link to="/signup">
+                Sign Up
+              </Link>
             </Grid>
-            <Grid item>Forgot password?</Grid>
+            <Grid item>
+              Forgot password?
+            </Grid>
           </Grid>
         </Box>
       </Box>
