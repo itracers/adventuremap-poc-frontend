@@ -95,7 +95,7 @@ const geojsonObject = {
   },
   features: countries.features,
 };
-export const Map = () => {
+export const Map = ({menuData, setMenuData}) => {
   const [center] = useState([0, 0]); //Добавить сюда текущую страну
   const [zoom] = useState(2);
   const format = new GeoJSON();
@@ -108,7 +108,7 @@ export const Map = () => {
         }
         style={styleFunction}
       />
-      <Select />
+      <Select menuData={menuData} setMenuData={setMenuData}/>
     </MapContainer>
   );
 };

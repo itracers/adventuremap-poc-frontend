@@ -3,7 +3,7 @@ import { MapContext } from "./MapContext";
 import { Select as SelectConstructor } from "ol/interaction";
 import { Fill, Stroke, Style } from "ol/style";
 
-export const Select = () => {
+export const Select = ({menuData, setMenuData}) => {
   const { map } = useContext(MapContext);
   useEffect(() => {
     if(!map) return;
@@ -16,7 +16,6 @@ export const Select = () => {
           new Style({
             stroke: new Stroke({
               color: "blue",
-              // width1,
             }),
             fill: new Fill({
               color: "rgba(0,0,255,0.2)",
@@ -26,9 +25,9 @@ export const Select = () => {
         return feature.values_.ADMIN;
       });
       if (names.length > 0) {
-        console.log(names.join(", "));
+        setMenuData({isOpen: true, data: {...menuData.data, country: names[0]}});
       } else {
-        console.log("No countries selected");
+        setMenuData({isOpen: false, data: {...menuData.data, country: names[0]}});
       }
     });
   }, [map]);

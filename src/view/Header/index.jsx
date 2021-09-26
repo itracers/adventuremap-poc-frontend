@@ -1,14 +1,14 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Button } from '@mui/material';
-import {Link} from "react-router-dom";
+import React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
-export const Header = ()=>{
+export const Header = ({ onMenu }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -19,15 +19,18 @@ export const Header = ()=>{
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={onMenu}
           >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Adventure Maps
           </Typography>
-          <Button color="inherit" component={Link} to = "/signin">Login</Button>
+          <Button color="inherit" component={Link} to="/signin">
+            Login
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
   );
-}
+};

@@ -3,11 +3,10 @@ import { MapContext } from "./MapContext";
 import {Map as MapDiv} from "./styled";
 import * as ol from "ol";
 
-export const Map = ({ children, zoom, center }) => {
+export const Map = React.memo(({ children, zoom, center }) => {
   const mapRef = useRef();
   const [map, setMap] = useState(null);
   useEffect(() => {
-    console.log(mapRef.current);
     let options = {
       view: new ol.View({ zoom, center }),
       target: mapRef.current,
@@ -21,7 +20,7 @@ export const Map = ({ children, zoom, center }) => {
   }, [zoom]);
   useEffect(() => {
     if (map) map.getView().setCenter(center);
-  }, [center]);
+  }, [...center]);
   return (
     <MapContext.Provider value={{ map }}>
       <MapDiv ref={mapRef}>
@@ -29,4 +28,4 @@ export const Map = ({ children, zoom, center }) => {
       </MapDiv>
     </MapContext.Provider>
   );
-};
+});
