@@ -12,7 +12,7 @@ export function Main() {
           setMenuData({ isOpen: !menuData.isOpen, data: menuData.data })
         }
       />
-      <Container>
+      <Container isOpen = {!menuData.isOpen}>
         <Sidebar menuData={menuData} />
         <Map menuData={menuData} setMenuData={setMenuData} />
       </Container>
