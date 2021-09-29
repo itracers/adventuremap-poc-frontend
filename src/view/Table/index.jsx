@@ -1,6 +1,6 @@
 import React from "react";
-import {Container} from "./styled";
+import { Container } from "./styled";
 
-export const Table = React.memo(()=>{
-    return <Container>Tableblock</Container>
-})
+export const Table = React.memo(() => {
+  return <Container>Tableblock</Container>;
+});

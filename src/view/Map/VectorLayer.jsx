@@ -14,6 +14,7 @@ export const VectorLayer = ({ source, style, zIndex = 0 }) => {
         map.removeLayer(vectorLayer);
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]);
   return null;
 };

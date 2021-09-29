@@ -3,15 +3,15 @@ import { MapContext } from "./MapContext";
 import { Select as SelectConstructor } from "ol/interaction";
 import { Fill, Stroke, Style } from "ol/style";
 
-export const Select = ({menuData, setMenuData}) => {
+export const Select = ({ menuData, setMenuData }) => {
   const { map } = useContext(MapContext);
   useEffect(() => {
-    if(!map) return;
+    if (!map) return;
     const select = new SelectConstructor();
     map.addInteraction(select);
     const selectedFeatures = select.getFeatures();
     selectedFeatures.on(["add", "remove"], function () {
-      const names = selectedFeatures.getArray().map(function (feature) {
+      const data = selectedFeatures.getArray().map(function (feature) {
         feature.setStyle(
           new Style({
             stroke: new Stroke({
@@ -22,14 +22,18 @@ export const Select = ({menuData, setMenuData}) => {
             }),
           })
         );
-        return feature.values_.ADMIN;
+        return { name: feature.values_.ADMIN, code: feature.values_.ISO_A3 };
       });
-      if (names.length > 0) {
-        setMenuData({isOpen: true, data: {...menuData.data, country: names[0]}});
+      if (data.length > 0) {
+        setMenuData({
+          isOpen: true,
+          data: { ...menuData.data, country: data[0] },
+        });
       } else {
-        setMenuData({isOpen: false, data: {...menuData.data, country: names[0]}});
+        setMenuData({ isOpen: false });
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]);
   return null;
 };

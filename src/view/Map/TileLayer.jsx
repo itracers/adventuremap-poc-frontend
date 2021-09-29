@@ -13,6 +13,7 @@ export const TileLayer = ({ source, zIndex = 0 }) => {
         map.removeLayer(tileLayer);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]);
   return null;
 };

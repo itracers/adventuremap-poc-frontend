@@ -7,18 +7,7 @@ import { Table } from "../Table";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import Avatar from '@mui/material/Avatar';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import LockIcon from '@mui/icons-material/Lock';
-import EmailIcon from '@mui/icons-material/Email';
-import PublicIcon from '@mui/icons-material/Public';
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import Autocomplete from '@mui/material/Autocomplete';
-import { Link } from "react-router-dom";
 
 
 export const Main = React.memo(() => {

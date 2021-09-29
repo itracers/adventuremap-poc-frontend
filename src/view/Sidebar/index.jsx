@@ -1,13 +1,20 @@
 import { Container } from "./styled";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Button, Typography } from "@mui/material";
+import TableInline from "../TableInline";
 
 export const Sidebar = ({ menuData }) => {
-    const location = useLocation()
+  const location = useLocation();
   return (
     <Container isOpen={menuData.isOpen}>
-      <div variant="h3">{menuData?.data?.country || null}</div>
-      {location.pathname == "/" && <Link to="/table">Таблица</Link>}
-      {location.pathname == "/table" && <Link to="/">Карта</Link>}
+      {["/", "/map"].includes(location.pathname) ? (
+        <>
+          <TableInline country={menuData?.data?.country} />
+          <br />
+          <Button href="/table">Full table</Button>
+        </>
+      ) : null}
+      {location.pathname === "/table" && <Button href="/">Map</Button>}
     </Container>
   );
 };
