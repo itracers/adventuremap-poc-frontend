@@ -15,10 +15,11 @@ import {
   LinearProgress,
   Typography,
 } from "@mui/material";
+import { WarningAmber } from "@mui/icons-material";
 
 const fetchJson = (...args) => fetch(...args).then((resp) => resp.json());
 
-const FEATURES_EXCLUDED = ["country.summary"];
+const FEATURES_EXCLUDED = ["country.summary", "visa.required"];
 
 const InlineTable = ({ headers, rows }) => {
   return (
@@ -26,11 +27,12 @@ const InlineTable = ({ headers, rows }) => {
       <Table sx={{ minWidth: 200 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            {headers && headers.map((header, i) => (
-              <TableCell align={i === headers.length - 1 ? "right" : "left"}>
-                {header}
-              </TableCell>
-            ))}
+            {headers &&
+              headers.map((header, i) => (
+                <TableCell align={i === headers.length - 1 ? "right" : "left"}>
+                  {header}
+                </TableCell>
+              ))}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,6 +57,7 @@ export default function TableInline({ country }) {
   const [allCountries, setAllCountries] = useState([]);
   const [currentFeatures, setCurrentFeatures] = useState([]);
   const [currentSummary, setCurrentSummary] = useState(null);
+  const [requiresVisa, setRequiresVisa] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -88,6 +91,7 @@ export default function TableInline({ country }) {
         ).then((countryFeatures) => {
           setLoading(false);
 
+          setRequiresVisa(null);
           setCurrentSummary(null);
 
           let result = allFeatures.reduce((prev, next) => {
@@ -106,8 +110,8 @@ export default function TableInline({ country }) {
               } else
                 switch (feature.feature.property) {
                   case "visa.required":
-                    feature.value = parseInt(feature.value) ? "Yes" : "No";
-                    break;
+                    setRequiresVisa(1);
+                    continue;
                   case "country.summary":
                     setCurrentSummary(feature.value);
                     continue;
@@ -161,6 +165,14 @@ export default function TableInline({ country }) {
       <InlineTable
         rows={currentFeatures.map(({ name, value }) => [name, value])}
       />
+
+      {requiresVisa && (
+        <div>
+          <br/>
+          <Typography><WarningAmber />Requires visa</Typography>
+          <Button variant="outlined">Generate application</Button>
+        </div>
+      )}
     </Paper>
   );
 }
