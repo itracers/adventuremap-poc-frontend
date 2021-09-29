@@ -88,6 +88,8 @@ export default function TableInline({ country }) {
         ).then((countryFeatures) => {
           setLoading(false);
 
+          setCurrentSummary(null);
+
           let result = allFeatures.reduce((prev, next) => {
             next.value = null;
             prev[next.id] = next;
