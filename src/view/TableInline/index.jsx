@@ -115,6 +115,8 @@ export default function TableInline({ country }) {
                   case "country.summary":
                     setCurrentSummary(feature.value);
                     continue;
+                  default:
+                    break;
                 }
             }
 
@@ -128,6 +130,7 @@ export default function TableInline({ country }) {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [country]);
 
   //TODO:
@@ -168,8 +171,11 @@ export default function TableInline({ country }) {
 
       {requiresVisa && (
         <div>
-          <br/>
-          <Typography><WarningAmber />Requires visa</Typography>
+          <br />
+          <Typography>
+            <WarningAmber />
+            Requires visa
+          </Typography>
           <Button variant="outlined">Generate application</Button>
         </div>
       )}

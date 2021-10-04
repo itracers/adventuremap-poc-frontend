@@ -7,7 +7,7 @@ import { Fill, Stroke, Style } from "ol/style";
 import { OSM, Vector } from "ol/source";
 import { fromLonLat } from "ol/proj";
 import GeoJSON from "ol/format/GeoJSON";
-import { CircularProgress, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 
 function valueToRgba(value, a) {
   let r = 255,
@@ -123,7 +123,7 @@ export const Map = ({ menuData, setMenuData }) => {
           style={styleFunction}
         />
       ) : (
-        <LinearProgress/>
+        <LinearProgress />
       )}
       <Select menuData={menuData} setMenuData={setMenuData} />
     </MapContainer>

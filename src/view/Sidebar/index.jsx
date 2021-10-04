@@ -1,6 +1,6 @@
 import { Container } from "./styled";
 import { useLocation } from "react-router-dom";
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import TableInline from "../TableInline";
 
 export const Sidebar = ({ menuData }) => {
