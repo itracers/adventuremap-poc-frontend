@@ -20,7 +20,6 @@ jobs:
       - run: 
           name: "Build app"
           command: |
-            echo "REACT_APP_API_URL=$REACT_APP_API_URL" > .env;
             npm run build;
       - run: 
           name: "Deploy"
