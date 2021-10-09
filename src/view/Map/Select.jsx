@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import { MapContext } from "./MapContext";
 import { Select as SelectConstructor } from "ol/interaction";
 import { Fill, Stroke, Style } from "ol/style";
-import { ConstructionOutlined } from "@mui/icons-material";
 
 export const Select = ({ menuData, setMenuData }) => {
   const { map } = useContext(MapContext);
