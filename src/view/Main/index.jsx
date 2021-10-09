@@ -55,7 +55,6 @@ export const Main = React.memo(() => {
           renderOption={(props, option) => (
             <Box
               component="li"
-            
               sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
               {...props}
             >

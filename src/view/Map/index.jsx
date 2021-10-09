@@ -105,7 +105,7 @@ export const Map = ({ menuData, setMenuData }) => {
   const [geojsonObject, setGeoJsonObject] = useState(null);
   const format = new GeoJSON();
   useEffect(() => {
-    fetch("/data/countriesHD.json")
+    fetch("/data/countries.json")
       .then((response) => response.json())
       .then((countries) => {
         setGeoJsonObject(getGeoJSONObject(countries));

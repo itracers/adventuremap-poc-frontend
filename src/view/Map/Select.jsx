@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { MapContext } from "./MapContext";
 import { Select as SelectConstructor } from "ol/interaction";
 import { Fill, Stroke, Style } from "ol/style";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 export const Select = ({ menuData, setMenuData }) => {
   const { map } = useContext(MapContext);
@@ -22,7 +23,9 @@ export const Select = ({ menuData, setMenuData }) => {
             }),
           })
         );
-        return { name: feature.values_.ADMIN, code: feature.values_.ISO_A3 };
+        const name = feature.values_.name || feature.values_.ADMIN
+        const code = feature.values_.ISO_A3 || feature.id_;
+        return { name, code };
       });
       if (data.length > 0) {
         setMenuData({
