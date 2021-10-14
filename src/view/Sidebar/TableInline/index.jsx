@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { API_URL } from "../../consts";
+import { API_URL } from "../../../consts";
 import {
   Button,
   Card,
@@ -16,8 +16,8 @@ import {
   Typography,
 } from "@mui/material";
 import { WarningAmber } from "@mui/icons-material";
+import { fetchJson } from "../../../utils";
 
-const fetchJson = (...args) => fetch(...args).then((resp) => resp.json());
 
 const FEATURES_EXCLUDED = ["country.summary", "visa.required"];
 
@@ -75,7 +75,6 @@ export default function TableInline({ country }) {
       setAllCountries(countries);
     });
   }, []);
-
   useEffect(() => {
     if (country) {
       const countryMatch = allCountries.find(
@@ -136,11 +135,8 @@ export default function TableInline({ country }) {
   //TODO:
   //Summary
   // Payment methods available (with “create wallet” link where possible).
-
   // Approximate expenses calculation based on current residence country (ideally also utilizing data, filled in form)
-
   // Is visa required
-
   // Visa types available including simplified cases e.g. PBH, digital nomads, etc.)
   // Visa application generation helper
 

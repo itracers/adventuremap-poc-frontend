@@ -1,7 +1,7 @@
 import { Container } from "./styled";
 import { useLocation } from "react-router-dom";
 import { Button } from "@mui/material";
-import TableInline from "../TableInline";
+import TableInline from "./TableInline";
 
 export const Sidebar = ({ menuData }) => {
   const location = useLocation();
