@@ -27,11 +27,13 @@ export const Select = ({ menuData, setMenuData }) => {
         return { name, code };
       });
       if (data.length > 0) {
+        console.log(1);
         setMenuData({
           isOpen: true,
           data: { ...menuData.data, country: data[0] },
         });
       } else {
+        console.log(2);
         setMenuData({ isOpen: false });
       }
     });

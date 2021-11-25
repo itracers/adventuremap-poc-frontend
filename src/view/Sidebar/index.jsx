@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import TableInline from "./TableInline";
 
 export const Sidebar = ({ menuData }) => {
+  console.log(menuData.isOpen);
   const location = useLocation();
   return (
     <Container isOpen={menuData.isOpen}>
